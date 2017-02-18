@@ -1,0 +1,31 @@
+
+page-home {
+
+  ion-scroll {
+    white-space: nowrap;
+    height: 260px;
+  }
+
+  ion-card-header {
+    background-color: #EEEEEE;
+    margin-bottom: 10px;
+  }
+
+
+  img {
+    margin: 0px;
+    text-align: center;
+  }
+
+  ion-card{
+    max-width: 150px !important;
+    max-height: 210px !important;
+    display: inline-block;
+  }
+
+  div {
+    display: inline-block;
+  }
+
+
+}

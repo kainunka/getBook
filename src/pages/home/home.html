@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>HomePage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-list align="center" >
+    <ion-list-header>
+      <img src="assets/avartar.png">
+    </ion-list-header>
+    <ion-list-header>
+      <h2>Get Book Story</h2>
+      <p>บันทึกเรื่องราวความทรงจำของคุณ</p>
+    </ion-list-header>
+  </ion-list>
+
+
+
+  <ion-row>
+    <ion-icon name="star"></ion-icon>
+    My Friend
+  </ion-row>
+  <p></p>
+
+
+  <ion-scroll scrollX="true">
+
+
+    <div *ngFor="let item of items | async">
+      <ion-card *ngIf="item.friend == true" (click)="goToNote()">
+        <ion-card-header>
+          <img src="{{item.pictureURL}}">
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col width-80>
+              <h2>{{ item.name }}</h2>
+              <p>{{ async }}</p>
+            </ion-col>
+
+            <ion-col width-20 align="right">
+              <ion-icon name="star" isActive="true" color="yellow"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+  </ion-scroll>
+
+
+  <p></p>
+  <ion-row>
+    <ion-icon name="star"></ion-icon>
+    My Family
+  </ion-row>
+  <p></p>
+
+
+  <ion-scroll scrollX="true">
+
+    <div *ngFor="let item of items | async">
+      <ion-card *ngIf="item.family == true" (click)="goToNote()">
+        <ion-card-header >
+          <img src="{{item.pictureURL}}">
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col width-80>
+              <h2>{{ item.name }}</h2>
+              <p>My Family</p>
+            </ion-col>
+
+            <ion-col width-20 align="right">
+              <ion-icon name="star" isActive="true" color="yellow"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </ion-scroll>
+
+
+
+  <p></p>
+  <ion-row>
+    <ion-icon name="star"></ion-icon>
+    Boy
+  </ion-row>
+  <p></p>
+
+
+  <ion-scroll scrollX="true">
+
+    <div *ngFor="let item of items | async">
+      <ion-card *ngIf="item.boy == true" (click)="goToNote()">
+        <ion-card-header >
+          <img src="{{item.pictureURL}}">
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col width-80>
+              <h2>{{ item.name }}</h2>
+              <p>Boy</p>
+            </ion-col>
+
+            <ion-col width-20 align="right">
+              <ion-icon name="star" isActive="true" color="yellow"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </ion-scroll>
+
+
+  <p></p>
+  <ion-row>
+    <ion-icon name="star"></ion-icon>
+    Girl
+  </ion-row>
+  <p></p>
+
+
+  <ion-scroll scrollX="true">
+
+    <div *ngFor="let item of items | async">
+      <ion-card *ngIf="item.girl == true" (click)="goToNote()">
+        <ion-card-header >
+          <img src="{{item.pictureURL}}">
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col width-80>
+              <h2>{{ item.name }}</h2>
+              <p>Girl</p>
+            </ion-col>
+
+            <ion-col width-20 align="right">
+              <ion-icon name="star" isActive="true" color="yellow"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-scroll>
+
+
+
+
+</ion-content>
