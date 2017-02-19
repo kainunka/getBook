@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Loading, LoadingController } from 'ionic-angular';
 
 import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
-import { CardPage } from '../../card/card';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
@@ -21,7 +20,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class HomePage {
   items: FirebaseListObservable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire, public loadingController: LoadingController) {
 
       this.items = angFire.database.list('/undefined/personal');
 
@@ -148,10 +147,9 @@ export class HomePage {
 
 
 
-  goToNote() {
+  goToNote(key) {
     this.navCtrl.push(NotePage, {
-      title: 'Home',
-      name: 'HomePage'
+      key: key
     });
     this.note.CallNote();
 

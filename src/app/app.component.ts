@@ -6,8 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { LoginPage } from '../pages/login/login';
-import { CardPage } from '../pages/card/card';
-
 
 
 @Component({
@@ -28,7 +26,7 @@ export class MyApp {
       { title: 'Login Page', component: LoginPage },
       { title: 'Home Page', component: HomePage },
       { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Page Two', component: Page2 },
     ];
 
   }

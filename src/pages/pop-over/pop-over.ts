@@ -2,21 +2,21 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /*
-  Generated class for the Setting page.
+  Generated class for the PopOver page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-setting',
-  templateUrl: 'setting.html'
+  selector: 'page-pop-over',
+  templateUrl: 'pop-over.html'
 })
-export class SettingPage {
+export class PopOverPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingPage');
+    console.log('ionViewDidLoad PopOverPage');
   }
 
 }

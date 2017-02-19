@@ -1,36 +1,133 @@
-<!--
-  Generated template for the Note page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>note</ion-title>
+    <ion-buttons end>
+      <button (click)="clickAdd()" ion-button icon-only color="royal">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-  <div *ngFor="let item of items | async">
-    <ion-card *ngIf="item.girl == true">
-      <ion-card-header >
-        <img src="{{item.pictureURL}}">
-      </ion-card-header>
-      <ion-card-content>
-        <ion-row>
-          <ion-col width-80>
-            <h2>{{ item.name }}</h2>
-            <p>Girl</p>
-          </ion-col>
 
-          <ion-col width-20 align="right">
-            <ion-icon name="star" isActive="true" color="yellow"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-  </div>
+
+<ion-list>
+  <ion-list-header>
+    Note
+  </ion-list-header>
+
+  <ion-item-sliding *ngFor="let item of note | async">
+    <ion-item (click)="getHome()">
+      <ion-avatar item-left>
+        <img src="assets/note.png">
+      </ion-avatar>
+      <h2>{{ item.title }}</h2>
+      <h3>{{ item.time }}</h3>
+      <p>{{ item.description }}</p>
+    </ion-item>
+    <ion-item-options side="left">
+      <button ion-button color="secondary" (click)="getHome()">
+        <ion-icon name="brush"></ion-icon>
+        Edit
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <button ion-button clear full>
+    Load More
+  </button>
+</ion-list>
+
+
+
+
+
+
+<ion-list>
+  <ion-list-header>
+    Favourite
+  </ion-list-header>
+
+  <ion-item-sliding *ngFor="let item of favourite | async">
+    <ion-item (click)="getHome()">
+      <ion-avatar item-left>
+        <img src="assets/avartar.png">
+      </ion-avatar>
+      <h2>{{ item.title }}</h2>
+      <h3>{{ item.$key }}</h3>
+      <p>{{ item.description }}</p>
+    </ion-item>
+    <ion-item-options side="left">
+      <button ion-button color="primary" (click)="getHome()">
+        <ion-icon name="text"></ion-icon>
+        Text
+      </button>
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="primary">
+        <ion-icon name="mail"></ion-icon>
+        Email
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <button ion-button clear full>
+    Load More
+  </button>
+</ion-list>
+
+
+
+
+<ion-list>
+  <ion-list-header>
+    Location
+  </ion-list-header>
+
+  <ion-item-sliding *ngFor="let item of location | async">
+    <ion-item (click)="getHome()">
+      <ion-avatar item-left>
+        <img src="assets/avartar.png">
+      </ion-avatar>
+      <h2>{{ item.title }}</h2>
+      <h3>{{ item.$key }}</h3>
+      <p>{{ item.description }}</p>
+    </ion-item>
+    <ion-item-options side="left">
+      <button ion-button color="primary" (click)="getHome()">
+        <ion-icon name="text"></ion-icon>
+        Text
+      </button>
+      <button ion-button color="secondary">
+        <ion-icon name="call"></ion-icon>
+        Call
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="primary">
+        <ion-icon name="mail"></ion-icon>
+        Email
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <button ion-button clear full>
+    Load More
+  </button>
+</ion-list>
+
 
 </ion-content>
