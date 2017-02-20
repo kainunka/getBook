@@ -11,6 +11,10 @@
 <ion-content padding>
 
 
+  <ion-fab top right edge>
+      <button ion-fab mini color="light" (click)="addPer()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
   <ion-list align="center" >
     <ion-list-header>
       <img src="assets/avartar.png">
@@ -24,11 +28,12 @@
 
 
 
-  <ion-row>
-    <ion-icon name="star"></ion-icon>
-    My Friend
-  </ion-row>
-  <p></p>
+  <ion-list-header>
+    <ion-row>
+      <ion-icon name="star"></ion-icon>
+      My Friend
+    </ion-row>
+  </ion-list-header>
 
 
   <ion-scroll scrollX="true">
@@ -58,12 +63,13 @@
   </ion-scroll>
 
 
-  <p></p>
-  <ion-row>
-    <ion-icon name="star"></ion-icon>
-    My Family
-  </ion-row>
-  <p></p>
+  <ion-list-header>
+    <ion-row>
+      <ion-icon name="star"></ion-icon>
+      My Family
+    </ion-row>
+  </ion-list-header>
+
 
 
   <ion-scroll scrollX="true">
@@ -92,12 +98,12 @@
 
 
 
-  <p></p>
-  <ion-row>
-    <ion-icon name="star"></ion-icon>
-    Boy
-  </ion-row>
-  <p></p>
+  <ion-list-header>
+    <ion-row>
+      <ion-icon name="star"></ion-icon>
+      Boy
+    </ion-row>
+  </ion-list-header>
 
 
   <ion-scroll scrollX="true">
@@ -125,12 +131,12 @@
   </ion-scroll>
 
 
-  <p></p>
-  <ion-row>
-    <ion-icon name="star"></ion-icon>
-    Girl
-  </ion-row>
-  <p></p>
+  <ion-list-header>
+    <ion-row>
+      <ion-icon name="star"></ion-icon>
+      Girl
+    </ion-row>
+  </ion-list-header>
 
 
   <ion-scroll scrollX="true">

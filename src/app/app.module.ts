@@ -6,7 +6,8 @@ import { Page2 } from '../pages/page2/page2';
 import { HomePage } from '../pages/home/home';
 import { NotePage } from '../pages/note/note';
 import { LoginPage } from '../pages/login/login';
-import { PopOverPage } from '../pages/pop-over/pop-over';
+import { FavouritePage } from '../pages/favourite/favourite';
+import { PersonPage } from '../pages/person/person';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     HomePage,
     NotePage,
     LoginPage,
-    PopOverPage
+    FavouritePage,
+    PersonPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -41,7 +43,8 @@ export const firebaseConfig = {
     HomePage,
     NotePage,
     LoginPage,
-    PopOverPage
+    FavouritePage,
+    PersonPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

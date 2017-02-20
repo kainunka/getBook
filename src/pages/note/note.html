@@ -1,18 +1,20 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>note</ion-title>
-    <ion-buttons end>
-      <button (click)="clickAdd()" ion-button icon-only color="royal">
-        <ion-icon name="person-add"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-
+  <ion-fab top right edge>
+      <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list>
+        <button ion-fab (click)="addNote()"><ion-icon name="create"></ion-icon></button>
+        <button ion-fab (click)="addFav(keyItem)"><ion-icon name="star"></ion-icon></button>
+        <button ion-fab><ion-icon name="locate"></ion-icon></button>
+      </ion-fab-list>
+  </ion-fab>
 
 <ion-list>
   <ion-list-header>
@@ -28,14 +30,15 @@
       <h3>{{ item.time }}</h3>
       <p>{{ item.description }}</p>
     </ion-item>
+
     <ion-item-options side="left">
-      <button ion-button color="secondary" (click)="getHome()">
+      <button ion-button color="secondary" (click)="editNote(item)">
         <ion-icon name="brush"></ion-icon>
         Edit
       </button>
     </ion-item-options>
     <ion-item-options side="right">
-      <button ion-button color="danger">
+      <button ion-button color="danger" (click)="deleteNote(item.$key)">
         <ion-icon name="trash"></ion-icon>
         Delete
       </button>
@@ -60,26 +63,15 @@
   <ion-item-sliding *ngFor="let item of favourite | async">
     <ion-item (click)="getHome()">
       <ion-avatar item-left>
-        <img src="assets/avartar.png">
+        <img src="assets/{{item.favourite}}">
       </ion-avatar>
       <h2>{{ item.title }}</h2>
-      <h3>{{ item.$key }}</h3>
       <p>{{ item.description }}</p>
     </ion-item>
-    <ion-item-options side="left">
-      <button ion-button color="primary" (click)="getHome()">
-        <ion-icon name="text"></ion-icon>
-        Text
-      </button>
-      <button ion-button color="secondary">
-        <ion-icon name="call"></ion-icon>
-        Call
-      </button>
-    </ion-item-options>
     <ion-item-options side="right">
-      <button ion-button color="primary">
-        <ion-icon name="mail"></ion-icon>
-        Email
+      <button ion-button color="danger" (click)="deleteFav(item.$key)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
       </button>
     </ion-item-options>
   </ion-item-sliding>

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>person</ion-title>
   </ion-navbar>
 
@@ -14,5 +14,54 @@
 
 
 <ion-content padding>
+
+<ion-fab top right edge>
+    <button ion-fab mini color="light" (click)="addPer(name, des, friend, family, boy, girl)">
+      <ion-icon name="add"></ion-icon>
+    </button>
+</ion-fab>
+
+<h2> Person Add </h2>
+
+<ion-list>
+
+  <ion-item>
+    <img src="assets/camera.png" (click)="takePic()">
+  </ion-item>
+
+  <ion-item>
+    <img [src]="base64Image" *ngIf="base64Image" />
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input type="text" [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="des"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Friend</ion-label>
+    <ion-checkbox color="dark" checked="true" [(ngModel)]="friend"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Family</ion-label>
+    <ion-checkbox color="dark" checked="true" [(ngModel)]="family"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Boy</ion-label>
+    <ion-checkbox color="dark" checked="true" [(ngModel)]="boy"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Girl</ion-label>
+    <ion-checkbox color="dark" checked="true" [(ngModel)]="girl"></ion-checkbox>
+  </ion-item>
+
+</ion-list>
+
+
 
 </ion-content>

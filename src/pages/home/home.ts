@@ -3,8 +3,10 @@ import { NavController, NavParams, AlertController, Loading, LoadingController }
 
 import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
+import { PersonPage } from '../person/person';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 
 /*
   Generated class for the Home page.
@@ -29,6 +31,10 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+  addPer() {
+    this.navCtrl.push(PersonPage);
   }
 
 
