@@ -8,6 +8,7 @@ import { NotePage } from '../pages/note/note';
 import { LoginPage } from '../pages/login/login';
 import { FavouritePage } from '../pages/favourite/favourite';
 import { PersonPage } from '../pages/person/person';
+import { Storage } from '@ionic/storage';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -33,7 +34,7 @@ export const firebaseConfig = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

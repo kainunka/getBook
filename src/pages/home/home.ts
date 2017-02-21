@@ -4,8 +4,10 @@ import { NavController, NavParams, AlertController, Loading, LoadingController }
 import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
 import { PersonPage } from '../person/person';
+import { LoginPage } from '../login/login';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Storage } from '@ionic/storage';
 
 
 /*
@@ -21,16 +23,37 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class HomePage {
   items: FirebaseListObservable<any>;
+  local: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire, public loadingController: LoadingController) {
 
-      this.items = angFire.database.list('/undefined/personal');
+
 
       console.log(this.items);
+      console.log("test");
+
+      this.local = new Storage();
+      this.local.set('name', 'golf');
+
+      this.local.get('name').then((data) => {
+        this.items = angFire.database.list('/' + data + '/personal');
+      })
+
+      this.local.get('uid').then((data) => {
+        console.log("UID = " + data);
+      })
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+
+  logout() {
+    this.local.remove('uid');
+    this.navCtrl.setRoot(LoginPage);
+    location.reload();
   }
 
   addPer() {

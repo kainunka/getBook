@@ -2,20 +2,24 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Facebook } from 'ionic-native';
-import {  AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 import { HomePage } from '../home/home';
+
+import firebase from 'firebase';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-
 })
 export class LoginPage {
   error: any;
+  userProfile: any = null;
+  local: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public angFire: AngularFire) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.local = new Storage();
   }
 
   ionViewDidLoad() {
@@ -23,46 +27,36 @@ export class LoginPage {
   }
 
 
-  registerUserWithFacebook() {
-    this.angFire.auth.login({
-      provider: AuthProviders.Facebook,
-      method: AuthMethods.Popup
-    }).then((value) => {
-      this.navCtrl.setRoot(HomePage);
-      console.log("value = " + JSON.stringify(value));
-    }).catch((error) => {
-      this.error = error;
-    });
-  }
-
-
-  /*loginFB():void {
+  loginFB() {
     Facebook.login(['email']).then((response) => {
-      console.log("__response = " + response);
+      console.log("__response = " + JSON.stringify(response));
+      alert("__response = " + JSON.stringify(response));
 
-      let creds = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken)
-
-      let providerConfig = {
-        provider: AuthProviders.Facebook,
-        method: AuthMethods.OAuthToken,
-        remember: 'default',
-        scope: ['email'],
-      };
+      const creds = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken)
 
 
-      this.angFire.auth.login(creds, providerConfig).then((success) => {
-        console.log("Firebase Success: " + JSON.stringify(success));
-        alert("Firebase Success: " + JSON.stringify(success));
-      }).catch((error) => {
-        console.log("Firebase failure: " + JSON.stringify(error));
-        alert("Firebase Success: " + JSON.stringify(error));
+      console.log("Creads: " + JSON.stringify(creds));
+
+      firebase.auth().signInWithCredential(creds)
+        .then((success) => {
+            console.log("Firebase success: " + JSON.stringify(success));
+            this.userProfile = success;
+            this.local.set('uid', this.userProfile.uid);
+            this.local.get('uid').then((data) => {
+              console.log("FacebookUID = " + data);
+              this.navCtrl.setRoot(HomePage);
+              location.reload();
+            });
+      })
+        .catch((error) => {
+            console.log("Firebase failure: " + JSON.stringify(error));
       });
 
 
 
     }).catch((error) => {
-      console.log(error);
+      console.log("Error: " + error);
     });
-  }*/
+  }
 
 }
