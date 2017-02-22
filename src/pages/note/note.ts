@@ -6,6 +6,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { PopOverPage } from '../pop-over/pop-over';
 import { HomePage } from '../home/home';
 import { FavouritePage } from '../favourite/favourite';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -18,18 +19,23 @@ export class NotePage {
   favourite: FirebaseListObservable<any>;
   location: FirebaseListObservable<any>;
   myDate: String = new Date().toISOString();
+  local: any;
 
   keyItem: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, angFire: AngularFire, public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
 
     this.keyItem = navParams.get('key');
+    this.local = new Storage();
 
     console.log(this.keyItem);
 
-    this.note = angFire.database.list('/undefined/note/' + this.keyItem);
-    this.favourite = angFire.database.list('/undefined/favourite/' + this.keyItem);
-    this.location = angFire.database.list('/undefined/location/' + this.keyItem);
+    this.local.get('name').then((data) => {
+      this.note = angFire.database.list('/' + data + '/note/' + this.keyItem);
+      this.favourite = angFire.database.list('/' + data + '/favourite/' + this.keyItem);
+      this.location = angFire.database.list('/' + data + '/location/' + this.keyItem);
+    })
+
   }
 
   ionViewDidLoad() {

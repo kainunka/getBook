@@ -5,6 +5,8 @@ import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
 import { PersonPage } from '../person/person';
 import { LoginPage } from '../login/login';
+import { ListPersonalPage } from '../list-personal/list-personal';
+
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Storage } from '@ionic/storage';
@@ -58,6 +60,10 @@ export class HomePage {
 
   addPer() {
     this.navCtrl.push(PersonPage);
+  }
+
+  showPer() {
+    this.navCtrl.push(ListPersonalPage);
   }
 
 

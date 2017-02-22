@@ -8,7 +8,12 @@ import { NotePage } from '../pages/note/note';
 import { LoginPage } from '../pages/login/login';
 import { FavouritePage } from '../pages/favourite/favourite';
 import { PersonPage } from '../pages/person/person';
+import { SlideZoomPage } from '../pages/slide-zoom/slide-zoom';
+import { ListPersonalPage } from '../pages/list-personal/list-personal';
 import { Storage } from '@ionic/storage';
+
+import { GalleryModal } from 'ionic-gallery-modal';
+import { ZoomableImage } from 'ionic-gallery-modal';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -30,7 +35,11 @@ export const firebaseConfig = {
     NotePage,
     LoginPage,
     FavouritePage,
-    PersonPage
+    PersonPage,
+    SlideZoomPage,
+    GalleryModal,
+    ZoomableImage,
+    ListPersonalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -45,7 +54,10 @@ export const firebaseConfig = {
     NotePage,
     LoginPage,
     FavouritePage,
-    PersonPage
+    PersonPage,
+    SlideZoomPage,
+    GalleryModal,
+    ListPersonalPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

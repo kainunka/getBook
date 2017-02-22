@@ -1,16 +1,75 @@
 
 page-home {
 
+  ion-content {
+
+  }
+
   ion-scroll {
     white-space: nowrap;
     height: 260px;
   }
 
   ion-card-header {
-    background-color: #EEEEEE;
+    background-color: #CFD8DC;
     margin-bottom: 10px;
+
   }
 
+  .head {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .body {
+    color: #FFFFFF;
+  }
+
+  .bar {
+    font-weight: bold;
+    color: #1976D2;
+    background-color: #1976D2;
+    filter: alpha(opacity=50);
+  }
+
+  .headBar {
+    font-weight: bold;
+    color: #1976D2;
+    filter: alpha(opacity=50);
+  }
+
+  .col2 {
+    text-align: right;
+  }
+
+  .scrollColor1 {
+    background-color: #FAFAFA;
+    border: 2px dashed #B0BEC5;
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .scrollColor2 {
+    background-color: #FAFAFA;
+    border: 2px dashed #B0BEC5;
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .scrollColor3 {
+    background-color: #FAFAFA;
+    border: 2px dashed #B0BEC5;
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .scrollColor4 {
+    background-color: #FAFAFA;
+    border: 2px dashed #B0BEC5;
+    margin: 10px;
+    padding: 5px;
+  }
 
   img {
     margin: 0px;

@@ -45,8 +45,27 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-inappbrowser",
+    {
+      "id": "cordova-plugin-facebook4",
+      "locator": "cordova-plugin-facebook4",
+      "variables": {
+        "APP_ID": "277565905991180",
+        "APP_NAME": "FirstApp"
+      }
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-compat",
+    "cordova-sqlite-storage",
+    "com-sarriaroman-photoviewer"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    }
+  ],
   "description": "getBook: An Ionic project"
 }

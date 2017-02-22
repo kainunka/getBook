@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { LoginPage } from '../pages/login/login';
+import { SlideZoomPage } from '../pages/slide-zoom/slide-zoom';
 import firebase from 'firebase';
 import { Storage } from '@ionic/storage';
 
@@ -35,12 +36,19 @@ export class MyApp {
     this.local = new Storage();
     // used for an example of ngFor and navigation
 
+    /*this.pages = [
+      { title: 'Home Page', component: HomePage },
+      { title: 'Page One', component: Page1 },
+      { title: 'Page Two', component: Page2 },
+    ];
+    this.rootPage = HomePage;*/
+
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
 
-      this.local.get('name').then((data) => {
+     this.local.get('name').then((data) => {
         if (data == null) {
           this.pages = [
             { title: 'Login', component: LoginPage },

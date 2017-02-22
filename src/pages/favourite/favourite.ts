@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the Favourite page.
 
@@ -19,13 +19,18 @@ export class FavouritePage {
   keyItem: any;
   des: any;
   favourite: FirebaseListObservable<any>;
+  local: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, angFire: AngularFire) {
 
     this.keyItem = navParams.get('key');
+    this.local = new Storage();
+
     console.log(this.keyItem);
 
-    this.favourite = angFire.database.list('/undefined/favourite/' + this.keyItem);
+    this.local.get('name').then((data) => {
+      this.favourite = angFire.database.list('/' + data + '/favourite/' + this.keyItem);
+    })
 
     this.itemList = [{
       id: 1,
