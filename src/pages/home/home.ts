@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, Loading, LoadingController } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
 import { PersonPage } from '../person/person';
 import { LoginPage } from '../login/login';
 import { ListPersonalPage } from '../list-personal/list-personal';
+import { ViewVideoPage } from '../view-video/view-video';
+import { ViewAllPage } from '../view-all/view-all';
 
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Storage } from '@ionic/storage';
 
 
-/*
-  Generated class for the Home page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -27,7 +25,7 @@ export class HomePage {
   items: FirebaseListObservable<any>;
   local: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire) {
 
 
 
@@ -38,7 +36,8 @@ export class HomePage {
       this.local.set('name', 'golf');
 
       this.local.get('name').then((data) => {
-        this.items = angFire.database.list('/' + data + '/personal');
+        this.items = angFire.database.list('/' + data + '/personal').map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+
       })
 
       this.local.get('uid').then((data) => {
@@ -47,8 +46,20 @@ export class HomePage {
 
   }
 
+
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+
+  viewVideo() {
+    this.navCtrl.push(ViewVideoPage);
+  }
+
+  viewAll() {
+    this.navCtrl.push(ViewAllPage);
   }
 
 

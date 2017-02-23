@@ -12,7 +12,8 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content style="background-color: #F5F5F5;">
+
 
 
   <ion-fab top right edge>
@@ -23,7 +24,8 @@
       <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
       <ion-fab-list>
         <button ion-fab (click)="addPer()"><ion-icon name="contact"></ion-icon></button>
-        <button ion-fab><ion-icon name="flame"></ion-icon></button>
+        <button ion-fab (click)="viewVideo()"><ion-icon name="flame"></ion-icon></button>
+        <button ion-fab (click)="viewAll()"><ion-icon name="star"></ion-icon></button>
       </ion-fab-list>
   </ion-fab>
 
@@ -36,24 +38,26 @@
   </ion-list>
 
 
+<div class="con">
+
+<ion-item color="cardCon" class="itemFix">
+
+  <ion-row center class="headBar" padding>
+    <ion-col class="col1">
+      <ion-icon name="contact"></ion-icon>
+      My Friend
+    </ion-col>
+    <ion-col class="col2">
+        <ion-icon name="arrow-forward" (click)="showPer()"></ion-icon>
+    </ion-col>
+  </ion-row>
 
 
-    <ion-row class="headBar" padding>
-      <ion-col class="col1">
-        <ion-icon name="contact"></ion-icon>
-        My Friend
-      </ion-col>
-      <ion-col class="col2">
-          <ion-icon name="arrow-forward" (click)="showPer()"></ion-icon>
-      </ion-col>
-    </ion-row>
 
-
-
-  <ion-scroll scrollX="true" padding class="scrollColor1">
+  <ion-scroll scrollX="true" class="scrollColor1">
 
     <div *ngFor="let item of items | async">
-      <ion-card *ngIf="item.friend == true" (click)="goToNote(item.$key)" class="animated fadeIn">
+      <ion-card *ngIf="item.friend == true" (click)="goToNote(item.$key)" id="card" class="animated fadeIn">
         <ion-card-header>
           <img src="{{item.picture}}" max-width="100%">
         </ion-card-header>
@@ -72,8 +76,9 @@
       </ion-card>
     </div>
 
-
   </ion-scroll>
+
+
 
 
   <ion-row class="headBar" padding>
@@ -88,10 +93,10 @@
 
 
 
-  <ion-scroll scrollX="true" padding class="scrollColor2">
+  <ion-scroll scrollX="true" class="scrollColor2">
 
     <div *ngFor="let item of items | async">
-      <ion-card *ngIf="item.family == true" (click)="goToNote(item.$key)" class="animated fadeIn">
+      <ion-card *ngIf="item.family == true" (click)="goToNote(item.$key)" id="card" class="animated fadeIn">
         <ion-card-header >
           <img src="{{item.picture}}">
         </ion-card-header>
@@ -125,10 +130,10 @@
   </ion-row>
 
 
-  <ion-scroll scrollX="true" padding class="scrollColor3">
+  <ion-scroll scrollX="true" class="scrollColor3">
 
     <div *ngFor="let item of items | async">
-      <ion-card *ngIf="item.boy == true" (click)="goToNote(item.$key)" class="animated fadeIn">
+      <ion-card *ngIf="item.boy == true" (click)="goToNote(item.$key)" id="card" class="animated fadeIn">
         <ion-card-header >
           <img src="{{item.picture}}">
         </ion-card-header>
@@ -161,10 +166,10 @@
   </ion-row>
 
 
-  <ion-scroll scrollX="true" padding class="scrollColor4">
+  <ion-scroll scrollX="true" class="scrollColor4">
 
     <div *ngFor="let item of items | async">
-      <ion-card *ngIf="item.girl == true" (click)="goToNote(item.$key)" class="animated fadeIn">
+      <ion-card *ngIf="item.girl == true" (click)="goToNote(item.$key)" id="card" class="animated fadeIn">
         <ion-card-header >
           <img src="{{item.picture}}">
         </ion-card-header>
@@ -183,8 +188,8 @@
       </ion-card>
     </div>
   </ion-scroll>
+</ion-item>
 
-
-
+</div>
 
 </ion-content>

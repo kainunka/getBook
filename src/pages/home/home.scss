@@ -1,8 +1,10 @@
 
 page-home {
 
-  ion-content {
 
+  .con {
+    text-align: center;
+    width: 100%;
   }
 
   ion-scroll {
@@ -37,6 +39,12 @@ page-home {
     font-weight: bold;
     color: #1976D2;
     filter: alpha(opacity=50);
+
+  }
+
+
+  .col1 {
+    text-align: left;
   }
 
   .col2 {
@@ -46,28 +54,25 @@ page-home {
   .scrollColor1 {
     background-color: #FAFAFA;
     border: 2px dashed #B0BEC5;
-    margin: 10px;
     padding: 5px;
+
   }
 
   .scrollColor2 {
     background-color: #FAFAFA;
     border: 2px dashed #B0BEC5;
-    margin: 10px;
     padding: 5px;
   }
 
   .scrollColor3 {
     background-color: #FAFAFA;
     border: 2px dashed #B0BEC5;
-    margin: 10px;
     padding: 5px;
   }
 
   .scrollColor4 {
     background-color: #FAFAFA;
     border: 2px dashed #B0BEC5;
-    margin: 10px;
     padding: 5px;
   }
 
@@ -79,6 +84,13 @@ page-home {
   ion-card{
     max-width: 150px !important;
     max-height: 210px !important;
+    display: inline-block;
+
+  }
+
+
+  .itemFix {
+    max-width: 1280px !important;
     display: inline-block;
   }
 

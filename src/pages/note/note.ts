@@ -1,12 +1,12 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, AlertController, ActionSheetController, ToastController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import { PopOverPage } from '../pop-over/pop-over';
-import { HomePage } from '../home/home';
 import { FavouritePage } from '../favourite/favourite';
 import { Storage } from '@ionic/storage';
+import { ViewNotePage } from '../view-note/view-note';
+import { LocationPage } from '../location/location';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class NotePage {
 
   keyItem: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, angFire: AngularFire, public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, angFire: AngularFire, public alertCtrl: AlertController, public toastCtrl: ToastController) {
 
     this.keyItem = navParams.get('key');
     this.local = new Storage();
@@ -31,9 +31,9 @@ export class NotePage {
     console.log(this.keyItem);
 
     this.local.get('name').then((data) => {
-      this.note = angFire.database.list('/' + data + '/note/' + this.keyItem);
-      this.favourite = angFire.database.list('/' + data + '/favourite/' + this.keyItem);
-      this.location = angFire.database.list('/' + data + '/location/' + this.keyItem);
+      this.note = angFire.database.list('/' + data + '/note/' + this.keyItem).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+      this.favourite = angFire.database.list('/' + data + '/favourite/' + this.keyItem).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+      this.location = angFire.database.list('/' + data + '/location/' + this.keyItem).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
     })
 
   }
@@ -42,8 +42,14 @@ export class NotePage {
     console.log('ionViewDidLoad NotePage');
   }
 
-  getHome() {
-    this.navCtrl.setRoot(HomePage);
+
+
+  getViewNote(key, keyParam) {
+    this.navCtrl.push(ViewNotePage, {
+      key: key,
+      keyParam: keyParam
+
+    });
   }
 
 
@@ -183,6 +189,13 @@ export class NotePage {
       key: key
     });
   }
+
+  addLocation(key) {
+    this.navCtrl.push(LocationPage, {
+      key: key
+    });
+  }
+
 
   deleteFav(itemID) {
     let prompt = this.alertCtrl.create({

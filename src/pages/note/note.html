@@ -12,7 +12,7 @@
       <ion-fab-list>
         <button ion-fab (click)="addNote()"><ion-icon name="create"></ion-icon></button>
         <button ion-fab (click)="addFav(keyItem)"><ion-icon name="star"></ion-icon></button>
-        <button ion-fab><ion-icon name="locate"></ion-icon></button>
+        <button ion-fab (click)="addLocation(keyItem)"><ion-icon name="locate"></ion-icon></button>
       </ion-fab-list>
   </ion-fab>
 
@@ -22,7 +22,7 @@
   </ion-list-header>
 
   <ion-item-sliding *ngFor="let item of note | async">
-    <ion-item (click)="getHome()">
+    <ion-item (click)="getViewNote(keyItem, item.$key)">
       <ion-avatar item-left>
         <img src="assets/note.png">
       </ion-avatar>
@@ -61,7 +61,7 @@
   </ion-list-header>
 
   <ion-item-sliding *ngFor="let item of favourite | async">
-    <ion-item (click)="getHome()">
+    <ion-item (click)="getViewNote(keyItem, item.$key)">
       <ion-avatar item-left>
         <img src="assets/{{item.favourite}}">
       </ion-avatar>
