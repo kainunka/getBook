@@ -1,11 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar, Splashscreen, NativeStorage } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { LoginPage } from '../pages/login/login';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
+
 import firebase from 'firebase';
 import { Storage } from '@ionic/storage';
 
@@ -35,19 +37,34 @@ export class MyApp {
     this.local = new Storage();
     // used for an example of ngFor and navigation
 
-    this.pages = [
+    /*this.pages = [
       { title: 'Home Page', component: HomePage },
       { title: 'Page One', component: Page1 },
       { title: 'Page Two', component: Page2 },
     ];
-    this.rootPage = HomePage;
+    this.rootPage = HomePage;*/
+
+
+  /*  this.pages = [
+      { title: 'Login', component: LoginPage },
+    ];
+
+    this.rootPage = LoginPage;*/
 
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
 
+      let env = this;
 
+      NativeStorage.getItem('user').then(function(data) {
+        env.rootPage = HomePage;
+        Splashscreen.hide();
+      }, function (error) {
+        env.rootPage = LoginPage;
+        Splashscreen.hide();
+      });
 
 
      /*this.local.get('name').then((data) => {

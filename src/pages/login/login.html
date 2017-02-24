@@ -9,9 +9,19 @@
 
 <ion-content padding>
 
+  <div align="center" style="margin-top: 50px; margin-bottom: 50px;">
+    <img src="assets/avartar.png" alt="">
+  </div>
 
-  <button ion-button color="primary">
-  <ion-icon name="md-create" (click)="loginFB()"> Login With Facebooks</ion-icon>
+  <button ion-button style="background-color:#3b5998;" full round>
+  <ion-icon name="logo-facebook" (click)="loginFB()"> Login With Facebooks</ion-icon>
   </button>
 
+  <button ion-button style="background-color:#db4437;" full round>
+  <ion-icon name="logo-googleplus" (click)="loginGoogle()"> Login With Google Plus</ion-icon>
+  </button>
+
+  <button ion-button style="background-color:#1da1f2;" full round>
+  <ion-icon name="logo-twitter" (click)="loginTwitter()"> Login With Twister</ion-icon>
+  </button>
 </ion-content>

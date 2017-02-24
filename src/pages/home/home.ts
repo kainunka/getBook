@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NativeStorage } from 'ionic-native';
 
 import { NotePage } from '../note/note';
 import { Note } from '../../providers/note';
@@ -9,11 +10,10 @@ import { ListPersonalPage } from '../list-personal/list-personal';
 import { ViewVideoPage } from '../view-video/view-video';
 import { ViewAllPage } from '../view-all/view-all';
 
-
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods, AngularFireModule } from 'angularfire2';
 import { Storage } from '@ionic/storage';
 
-
+//import "rxjs/add/operator/map";
 
 
 @Component({
@@ -24,8 +24,32 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
   items: FirebaseListObservable<any>;
   local: any;
+  user: any;
+  userReady: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private note: Note, angFire: AngularFire) {
+
+    let env = this;
+    env.user = {
+      name: '',
+      picture: 'assets/avartar.png',
+      token: ''
+    };
+
+    NativeStorage.getItem('user').then(function(data) {
+      env.user = {
+        name: data.name,
+        picture: data.picture,
+        token: data.token
+      };
+      console.log("userLocal = " + env.user);
+      console.log("userLocal2 = " + env.user.name);
+
+      env.userReady = true;
+    }, function(error) {
+      console.log("Error = " + error);
+    });
+
 
 
 
@@ -51,6 +75,13 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+  doLogout() {
+    var nav = this.navCtrl;
+    NativeStorage.remove('user');
+    nav.setRoot(LoginPage);
+
   }
 
 

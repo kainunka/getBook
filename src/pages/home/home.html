@@ -3,11 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home Page</ion-title>
+    <ion-title> Hello {{ user.name }} </ion-title>
 
     <!---<button ion-button side-right (click)="logout()">
       <ion-icon name="add"></ion-icon>
     </button>-->
+
   </ion-navbar>
 </ion-header>
 
@@ -26,13 +27,15 @@
         <button ion-fab (click)="addPer()"><ion-icon name="contact"></ion-icon></button>
         <button ion-fab (click)="viewVideo()"><ion-icon name="flame"></ion-icon></button>
         <button ion-fab (click)="viewAll()"><ion-icon name="star"></ion-icon></button>
+        <button ion-fab (click)="doLogout()"><ion-icon name="md-log-out"></ion-icon></button>
       </ion-fab-list>
   </ion-fab>
 
   <ion-list align="center">
     <ion-list-header class="bar">
-      <img src="assets/avartar.png">
-      <h2 class="head">Get Book Story</h2>
+      <img src="{{user.picture}}" width="100">
+      <h2 class="head">{{user.name}}</h2>
+      <h3 class="head">Get Book Story</h3>
       <p class="body">บันทึกเรื่องราวความทรงจำของคุณ</p>
     </ion-list-header>
   </ion-list>

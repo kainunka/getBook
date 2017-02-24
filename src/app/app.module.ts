@@ -13,6 +13,7 @@ import { ViewNotePage } from '../pages/view-note/view-note';
 import { LocationPage } from '../pages/location/location';
 import { ViewVideoPage } from '../pages/view-video/view-video';
 import { ViewAllPage } from '../pages/view-all/view-all';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 import { Storage } from '@ionic/storage';
 
@@ -46,7 +47,8 @@ export const firebaseConfig = {
     ViewNotePage,
     LocationPage,
     ViewVideoPage,
-    ViewAllPage
+    ViewAllPage,
+    UserProfilePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -67,7 +69,8 @@ export const firebaseConfig = {
     ViewNotePage,
     LocationPage,
     ViewVideoPage,
-    ViewAllPage
+    ViewAllPage,
+    UserProfilePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
